@@ -59,16 +59,16 @@ Let's now change our mind and decide that we want our type property to be typede
 @"videoType" : @"@Selector(videoTypeFromString:, type)",
 
 //! implemented on instance you are parsing
-- (NSUInteger)videoTypeFromString:(NSString *)type
+- (id)videoTypeFromString:(NSString *)type
 {
   if ([type isEqualToString:@"shortVideo"]) {
-    return VideoTypeShort;
+    return @(VideoTypeShort);
   }
 
-  return VideoTypeLong;
+  return @(VideoTypeLong);
 }
 ```` 
-Done. Same approach will work for sub-object instances or anything that you can assign to property.
+Done. KVC should also take care of escaping NSNumber into int if your property uses primitive type. Same approach will work for sub-object instances or anything that you can assign to property.
 
 ### Referencing arrays items
 If your data comes to you in ordered array instead of dictionaries you can reference that as well:
@@ -91,9 +91,12 @@ You can expand boxing capabilities across whole application easily, just add cat
 ````
 Now you can use @Type mapping everywhere in your code.
 
+# Installing
+Use CocoaPods.
+Or just add KZPropertyMapper.h / m to your project, make sure you enable ARC on this files.
+
 # Final note
 Unit tests should serve as documentation. Default boxing types include @URL and @Date. 
-CocoaPods spec will follow shortly. For now you can just add KZPropertyMapper.h / m to your project, ARC only.
 
 [Follow me on twitter][7]
 
