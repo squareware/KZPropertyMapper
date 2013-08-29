@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #ifndef KZPropertyMapperLogIgnoredValues
-  #define KZPropertyMapperLogIgnoredValues 1
+  #define KZPropertyMapperLogIgnoredValues 0
 #endif
 
 @interface KZPropertyMapper : NSObject
